@@ -21,7 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id_siswa
  * @property integer $id_jadwal
  * @property string $status
- * @property \Carbon\Carbon $absence_at
+ * @property \Carbon\Carbon $absen
+ * @property \Carbon\Carbon $absen_buka
+ * @property \Carbon\Carbon $absen_tutup
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \App\Models\Jadwal $jadwal
@@ -37,6 +39,14 @@ class Absen extends Model
 	 */
 	protected $table = 'absen';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_siswa', 'id_jadwal','status', 'absen', 'absen_buka', 'absen_tutup',
+    ];
 
 	/**
 	 * The attributes that should be hidden for arrays.
@@ -91,7 +101,4 @@ class Absen extends Model
 			'id_siswa'
 		);
 	}
-
-
-
 }

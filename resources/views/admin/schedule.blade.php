@@ -97,26 +97,27 @@
                                                     @if($val->hari == 1)<option value="1" selected>Senin</option>@else<option value="1">Senin</option>@endif
                                                     @if($val->hari == 2)<option value="2" selected>Selasa</option>@else<option value="2">Selasa</option>@endif
                                                     @if($val->hari == 3)<option value="3" selected>Rabu</option>@else<option value="3">Rabu</option>@endif
-                                                    @if($val->hari == 4)<option value="4" selected>Kamis</option>@else<option value="3">Rabu</option>@endif
-                                                    @if($val->hari == 5)<option value="5" selected>Jum'at</option>@else<option value="3">Rabu</option>@endif
-                                                    @if($val->hari == 6)<option value="6" selected>Sabtu</option>@else<option value="3">Rabu</option>@endif
+                                                    @if($val->hari == 4)<option value="4" selected>Kamis</option>@else<option value="4">Kamis</option>@endif
+                                                    @if($val->hari == 5)<option value="5" selected>Jum'at</option>@else<option value="5">Jum'at</option>@endif
+                                                    @if($val->hari == 6)<option value="6" selected>Sabtu</option>@else<option value="6">Sabtu</option>@endif
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="jam">Jam ke</label>
                                                 <select id="jam" data-placeholder="Jam ke" class="chosen-select form-control" name="jam" tabindex="6">
                                                     <option value=""></option>
-                                                    @for($i=1;$i<7;$i++)
-                                                        @if($i == $val->jam)
-                                                            <option value="{{$i}}" selected>{{$i}}</option>
+                                                    @foreach($time as $jam)
+                                                        @if($val->jam === $jam->id)
+                                                            <option value="{{$jam->id}}" selected>{{$jam->jam}}</option>
                                                         @else
-                                                            <option value="{{$i}}">{{$i}}</option>
+                                                            <option value="{{$jam->id}}">{{$jam->jam}}</option>
                                                         @endif
-                                                    @endfor
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <button type="submit" class="btn btn-default">Submit</button>
-                                        </form>                                    </div>
+                                        </form>
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>
@@ -181,9 +182,9 @@
                                         <label for="jam">Jam ke</label>
                                         <select id="jam" data-placeholder="Jam ke" class="chosen-select form-control" name="jam" tabindex="6">
                                             <option value=""></option>
-                                            @for($i=1;$i<7;$i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                            @endfor
+                                            @foreach($time as $jam)
+                                                <option value="{{$jam->id}}">{{$jam->jam}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-default">Submit</button>

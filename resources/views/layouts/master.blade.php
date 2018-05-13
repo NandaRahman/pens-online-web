@@ -21,10 +21,7 @@
         <div class="nav navbar-nav navbar-left">
             <li><a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a></li>
             @role('user')
-            <li><a class="nav-link" href="{{ route('user.absence') }}">{{ __('Absensi') }}</a></li>
             <li><a class="nav-link" href="{{ route('user.schedule') }}">{{ __('Jadwal') }}</a></li>
-            <li><a class="nav-link" href="{{ route('user.student') }}">{{ __('Siswa') }}</a></li>
-            <li><a class="nav-link" href="{{ route('user.teacher') }}">{{ __('Guru') }}</a></li>
             @endrole
             @role('admin')
             <li class="dropdown">
@@ -32,6 +29,7 @@
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.absence') }}">{{ __('Absen') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.time') }}">{{ __('Jam') }}</a></li>
                     <li><a class="nav-link" href="{{ route('admin.schedule') }}">{{ __('Jadwal') }}</a></li>
                     <li><a class="nav-link" href="{{ route('admin.student') }}">{{ __('Siswa') }}</a></li>
                     <li><a class="nav-link" href="{{ route('admin.teacher') }}">{{ __('Guru') }}</a></li>

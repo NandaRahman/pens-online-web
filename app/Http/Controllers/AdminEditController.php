@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddTeacherRequest;
+use App\Jam;
 use App\Models\Siswa;
+use App\Models\StatusAbsensi;
 use Dirape\Token\Token;
 use App\Models\Absen;
 use App\Models\Guru;
@@ -23,6 +25,7 @@ class AdminEditController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     //Schedule
@@ -30,11 +33,13 @@ class AdminEditController extends Controller
         $data = Jadwal::all();
         $teacher = DB::table('USERS AS US')->join('GURU AS GU','GU.ID_USER','=', 'US.ID')->get();
         $class = Kelas::all();
+        $time = Jam::all();
         $lesson = Pelajaran::all();
         return view('admin/schedule')
             ->with('data', $data)
             ->with('teacher', $teacher)
             ->with('lesson', $lesson)
+            ->with('time', $time)
             ->with('class', $class);
     }
     public function addSchedule(Request $request){
@@ -58,7 +63,7 @@ class AdminEditController extends Controller
         return redirect()->route('admin.schedule');
     }
     public function deleteSchedule(Request $request){
-        $data = Jadwal::all($request->all());
+        Jadwal::where('id','=',$request->id)->delete();
         return redirect()->route('admin.schedule');
     }
 
@@ -137,6 +142,8 @@ class AdminEditController extends Controller
                 'telepon' => $request->post('telepon'),
                 'alamat'=>$request->post('alamat'),
             ]);
+            $data->attachRole(Role::find(2));
+            $data->save();
         }
         return redirect()->route('admin.teacher');
     }
@@ -221,6 +228,38 @@ class AdminEditController extends Controller
             Siswa::where('id', '=', $request->id)->delete();
         }
         return redirect()->route('admin.student');
+    }
+
+    //Status Absence
+    public function setAbsence(){
+        StatusAbsensi::create([
+            'tanggal'=>date('Y-m-d'),
+            'status'=>'buka'
+        ]);
+        return redirect()->route('home');
+    }
+
+    //Time
+    public function editTime(){
+        $data = Jam::all();
+        return view('admin/time')->with('data', $data);
+    }
+    public function addTime(Request $request){
+        Jam::create($request->all());
+        return redirect()->route('admin.time');
+    }
+    public function updateTime(Request $request){
+        Jam::where('id', '=', $request->id)->update([
+            'jam'=>$request->jam,
+        ]);
+        return redirect()->route('admin.time');
+    }
+    public function deleteTime(Request $request){
+        if ($this->userValidation($request)) {
+            Jam::where('id', '=', $request->id)->delete();
+        }
+        return redirect()->route('admin.time');
+
     }
 
 }

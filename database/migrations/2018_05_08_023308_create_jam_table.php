@@ -15,7 +15,7 @@ class CreateJamTable extends Migration
     {
         Schema::create('jam', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("jam", 5);
+            $table->time("jam");
             $table->timestamps();
         });
     }
