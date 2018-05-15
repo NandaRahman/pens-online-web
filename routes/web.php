@@ -14,7 +14,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('ID/{id?}',function ($id='20'){
     echo 'ID :'.$id;
@@ -22,12 +21,12 @@ Route::get('ID/{id?}',function ($id='20'){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/test', 'AbsenceController@setDetailedAbsence')->name('test');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::prefix('/user')->group(function(){
     Route::get('/', 'HomeController@index')->name('user.home');
+
     Route::get('/reset-password','PasswordResetController@index')->name('user.password_reset');
     Route::post('/reset-proccess','PasswordResetController@resetPassword')->name('user.proccess_reset');
 
@@ -42,7 +41,8 @@ Route::prefix('/user')->group(function(){
 });
 
 Route::prefix('/admin')->group(function(){
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('admin.home');
+
     Route::get('/set-absence','AdminEditController@setAbsence')->name('admin.open-absence');
 
     Route::get('/time','AdminEditController@editTime')->name('admin.time');

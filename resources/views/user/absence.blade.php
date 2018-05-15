@@ -58,10 +58,6 @@
             @endif
         </div>
         <script>
-            $('.btn-toggle').click(function() {
-
-            });
-
             function sendUpdate(elem,data) {
                 $stat =$(elem).attr("value");
                 console.log($stat);

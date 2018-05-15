@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddTeacherRequest;
 use App\Jam;
+use App\Models\Role;
 use App\Models\Siswa;
 use App\Models\StatusAbsensi;
 use Dirape\Token\Token;

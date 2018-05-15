@@ -184,7 +184,7 @@ class AbsenceController extends Controller
         DB::table('absen')->where([
             'id_jadwal'=>$this->check_active[0]->id_jadwal,
         ])->update(['absen_tutup' => date('Y-m-d H:i:s')]);;
-        return redirect()->route('user.home');
+        return redirect()->route('home');
     }
 
 
