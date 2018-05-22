@@ -14,8 +14,6 @@
     <!-- MetisMenu CSS -->
     <link href="{{asset('public/sb-admin/vendor/metisMenu/metisMenu.min.css')}}" rel="stylesheet">
 
-
-
     <!-- Custom CSS -->
     <link href="{{asset('public/sb-admin/dist/css/sb-admin-2.css')}}" rel="stylesheet">
 
@@ -30,15 +28,6 @@
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{asset('public/css/style.css')}}">
-
-    <!-- DataTables CSS -->
-    <link href="{{asset('public/sb-admin/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="{{asset('public/sb-admin/vendor/datatables-responsive/dataTables.responsive.css')}}" rel="stylesheet">
-
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
 </head>
 <body>
@@ -89,16 +78,35 @@
                         <li><a href="{{ route('admin.absence') }}"><i class="fa fa-paperclip fa-fw"></i> {{ __('Absen') }}</a></li>
                         <li><a href="{{ route('admin.time') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Jam') }}</a></li>
                         <li><a href="{{ route('admin.schedule') }}"><i class="fa fa-hacker-news fa-fw"></i> {{ __('Jadwal') }}</a></li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Data Dasar<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="{{ route('admin.teacher') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Guru') }}</a></li>
-                                <li><a href="{{ route('admin.student') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Siswa') }}</a></li>
-                                <li><a href="{{ route('admin.class') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Kelas') }}</a></li>
-                                <li><a href="{{ route('admin.lesson') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Pelajaran') }}</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{ route('admin.student') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Siswa') }}</a></li>
+                        <li><a href="{{ route('admin.teacher') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Guru') }}</a></li>
+                        <li><a href="{{ route('admin.class') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Kelas') }}</a></li>
+                        <li><a href="{{ route('admin.lesson') }}"><i class="fa fa-times-circle fa-fw"></i> {{ __('Pelajaran') }}</a></li>
                         @endrole
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="panels-wells.html">Panels and Wells</a>
+                                </li>
+                                <li>
+                                    <a href="buttons.html">Buttons</a>
+                                </li>
+                                <li>
+                                    <a href="notifications.html">Notifications</a>
+                                </li>
+                                <li>
+                                    <a href="typography.html">Typography</a>
+                                </li>
+                                <li>
+                                    <a href="icons.html"> Icons</a>
+                                </li>
+                                <li>
+                                    <a href="grid.html">Grid</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -107,9 +115,9 @@
         </nav>
 
         <div id="page-wrapper">
-            {{--<div class="container">--}}
+            <div class="container">
                 @yield('content')
-            {{--</div>--}}
+            </div>
         </div>
     </div>
 
@@ -122,11 +130,6 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{asset('public/sb-admin/vendor/metisMenu/metisMenu.min.js')}}"></script>
 
-    <!-- DataTables JavaScript -->
-    <script src="{{asset('public/sb-admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('public/sb-admin/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
-    <script src="{{asset('public/sb-admin/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>
-
     <!-- Morris Charts JavaScript -->
     <script src="{{asset('public/sb-admin/vendor/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('public/sb-admin/vendor/morrisjs/morris.min.js')}}"></script>
@@ -137,14 +140,6 @@
 
 
 </main>
-
-<script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
-</script>
 
 </body>
 </html>
