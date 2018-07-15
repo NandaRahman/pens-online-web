@@ -146,6 +146,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        //Laravel FCM  Configuration
+        LaravelFCM\FCMServiceProvider::class,
+        //OCI8 Laravel Yajra
+        Yajra\Oci8\Oci8ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -181,7 +185,7 @@ return [
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
-        'Auth' => Illuminate\Support\Facades\Auth::class,
+        'Web' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,

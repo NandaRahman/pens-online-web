@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::prefix('mobile')->group(function() {
+    Route::post('/login', 'Api\LoginController@index');
+    Route::post('/reminder', 'Api\ReminderController@index');
+    Route::post('/phone:edit', 'Api\ProfilController@editNoTelp');
+    Route::post('/pengumuman', 'Api\DataController@pengumuman');
 });
+
+Route::prefix('mahasiswa')->group(function(){
+    Route::post('/absen','Api\AbsensiController@mahasiswa');
+    Route::post('/profil','Api\ProfilController@mahasiswa');
+    Route::post('/jadwal','Api\JadwalController@mahasiswa');
+});
+
+Route::prefix('pegawai')->group(function(){
+    Route::post('/absen','Api\AbsensiController@pegawai');
+    Route::post('/profil','Api\ProfilController@pegawai');
+});
+
